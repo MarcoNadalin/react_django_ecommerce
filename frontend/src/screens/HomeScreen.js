@@ -4,6 +4,8 @@ import { Row, Col } from "react-bootstrap";
 import axios from "axios";
 
 import Product from "../components/Product";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 import { listProducts } from "../actions/productActions";
 
 function HomeScreen() {
@@ -19,9 +21,9 @@ function HomeScreen() {
     <div>
       <h1> Latest Products </h1>
       {loading ? (
-        <h2> LOADING... </h2>
+        <Loader />
       ) : error ? (
-        <h3> ERROR... {error} </h3>
+        <Message variant="danger">{error}</Message>
       ) : (
         <Row>
           {products.map((product) => (
